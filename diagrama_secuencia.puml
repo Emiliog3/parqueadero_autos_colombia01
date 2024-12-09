@@ -1,0 +1,43 @@
+@startuml
+actor Usuario
+actor Administrador
+
+participant "Sistema" as Sistema
+participant "Base de Datos" as DB
+
+' Gestión de Usuarios
+Usuario -> Sistema: Registrar usuario (nombre, correo, rol)
+Sistema -> DB: Guardar usuario
+DB --> Sistema: Confirmación
+Sistema --> Usuario: Usuario registrado
+
+Usuario -> Sistema: Eliminar usuario
+Sistema -> DB: Eliminar usuario por ID
+DB --> Sistema: Confirmación
+Sistema --> Usuario: Usuario eliminado
+
+' Gestión de Celdas y Registro de Entrada/Salida
+Usuario -> Sistema: Registrar entrada (placa, tipo de vehículo)
+Sistema -> DB: Buscar celda disponible
+DB --> Sistema: Celda asignada
+Sistema -> DB: Guardar registro de entrada
+DB --> Sistema: Confirmación
+Sistema --> Usuario: Entrada registrada y celda asignada
+
+Usuario -> Sistema: Registrar salida (placa)
+Sistema -> DB: Buscar registro de entrada por placa
+Sistema -> DB: Liberar celda asignada
+DB --> Sistema: Confirmación
+Sistema --> Usuario: Salida registrada y celda liberada
+
+' Gestión de Pagos
+Usuario -> Sistema: Registrar pago (usuario, monto)
+Sistema -> DB: Guardar información del pago
+DB --> Sistema: Confirmación
+Sistema --> Usuario: Pago registrado
+
+Usuario -> Sistema: Consultar historial de pagos
+Sistema -> DB: Obtener historial de pagos
+DB --> Sistema: Datos del historial
+Sistema --> Usuario: Mostrar historial de pagos
+@enduml

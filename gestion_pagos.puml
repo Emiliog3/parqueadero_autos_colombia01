@@ -1,0 +1,21 @@
+@startuml
+left to right direction
+
+actor Usuario as user
+actor Administrador as admin
+actor SistemaBancario as banco
+
+package "Gestión de Pagos" {
+    usecase "Registrar Pago" as RP
+    usecase "Consultar Historial de Pagos" as CHP
+    usecase "Generar Comprobante de Pago" as GCP
+}
+
+user --> RP : "Realiza el pago"
+user --> GCP : "Solicita comprobante"
+admin --> CHP : "Consulta pagos realizados"
+RP --> banco : "Verifica y procesa pago"
+@enduml
+
+
+

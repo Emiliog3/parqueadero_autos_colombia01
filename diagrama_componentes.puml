@@ -1,0 +1,19 @@
+@startuml
+package "Parqueadero Autos Colombia" {
+    [Interfaz de Usuario] -down-> [API REST]
+    [API REST] -down-> [Lógica de Negocio]
+    [Lógica de Negocio] -down-> [Base de Datos]
+
+    package "Módulos" {
+        [Gestión de Usuarios] --> [Lógica de Negocio]
+        [Gestión de Pagos] --> [Lógica de Negocio]
+        [Gestión de Celdas y Registro] --> [Lógica de Negocio]
+    }
+
+    [Gestión de Usuarios] --> [Base de Datos]
+    [Gestión de Pagos] --> [Base de Datos]
+    [Gestión de Celdas y Registro] --> [Base de Datos]
+
+    [API REST] --> [Sistema Bancario] : Conexión Bancaria
+}
+@enduml

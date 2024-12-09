@@ -1,0 +1,41 @@
+@startuml
+left to right direction
+
+actor Usuario
+actor Administrador
+actor SistemaExterno as "Sistema Bancario"
+
+package "Gestión de Usuarios" {
+    usecase "Registrar Usuario" as RU
+    usecase "Modificar Usuario" as MU
+    usecase "Eliminar Usuario" as EU
+    usecase "Consultar Usuarios" as CU
+}
+
+package "Gestión de Celdas y Registro" {
+    usecase "Registrar Entrada" as RE
+    usecase "Registrar Salida" as RS
+    usecase "Consultar Disponibilidad de Celdas" as CDC
+}
+
+package "Gestión de Pagos" {
+    usecase "Registrar Pago" as RP
+    usecase "Generar Comprobante de Pago" as GCP
+    usecase "Consultar Historial de Pagos" as CHP
+}
+
+Usuario --> RU : "Registrar datos del usuario"
+Usuario --> MU : "Actualizar datos del usuario"
+Administrador --> EU : "Eliminar un usuario existente"
+Administrador --> CU : "Consultar lista de usuarios"
+
+Usuario --> RE : "Registrar entrada de vehículo"
+Usuario --> RS : "Registrar salida de vehículo"
+Usuario --> CDC : "Consultar celdas disponibles"
+
+Usuario --> RP : "Realizar el pago"
+Usuario --> GCP : "Generar comprobante del pago"
+Administrador --> CHP : "Consultar registros de pagos realizados"
+RP --> SistemaExterno : "Conexión con el sistema bancario"
+
+@enduml

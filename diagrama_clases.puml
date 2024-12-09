@@ -1,0 +1,65 @@
+@startuml
+class Usuario {
+    - id: int
+    - nombre: String
+    - correo: String
+    - rol: String
+    + registrarUsuario(): void
+    + modificarUsuario(): void
+    + eliminarUsuario(): void
+}
+
+class Celda {
+    - id: int
+    - estado: String
+    - placaVehiculo: String
+    - tipoVehiculo: String
+    + consultarDisponibilidad(): void
+    + asignarCelda(placa: String, tipo: String): void
+    + liberarCelda(): void
+}
+
+class Pago {
+    - id: int
+    - usuario: Usuario
+    - monto: double
+    - fecha: Date
+    + registrarPago(): void
+    + consultarHistorial(): List<Pago>
+}
+
+class Registro {
+    - id: int
+    - placa: String
+    - tipoVehiculo: String
+    - fechaEntrada: Date
+    - fechaSalida: Date
+    + registrarEntrada(placa: String, tipo: String): void
+    + registrarSalida(placa: String): void
+}
+
+class Sistema {
+    + gestionarUsuarios(usuario: Usuario): void
+    + gestionarCeldas(celda: Celda): void
+    + gestionarPagos(pago: Pago): void
+    + registrarEntradaSalida(registro: Registro): void
+}
+
+class BaseDeDatos {
+    + guardarUsuario(usuario: Usuario): void
+    + eliminarUsuario(id: int): void
+    + buscarUsuario(id: int): Usuario
+    + guardarCelda(celda: Celda): void
+    + buscarCelda(id: int): Celda
+    + guardarPago(pago: Pago): void
+    + consultarPagos(): List<Pago>
+    + guardarRegistro(registro: Registro): void
+    + buscarRegistro(placa: String): Registro
+}
+
+Usuario --> Sistema
+Celda --> Sistema
+Pago --> Sistema
+Registro --> Sistema
+Sistema --> BaseDeDatos
+@enduml

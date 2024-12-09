@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parqueadero Autos Colombia</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Parqueadero Autos Colombia</h1>
+        <nav>
+            <ul class="menu">
+                <li><a href="#registrar-usuario">Gestión de Usuarios</a></li>
+                <li><a href="#gestion-celdas">Gestión de Celdas y Registro de Entrada/Salida</a></li>
+                <li><a href="#gestionar-pagos">Gestión de Pagos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Gestión de Usuarios -->
+    <section id="registrar-usuario" class="mockup">
+        <h2>Gestión de Usuarios</h2>
+        <form id="usuario-form">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" placeholder="Ingrese nombre" required>
+
+            <label for="correo">Correo Electrónico:</label>
+            <input type="email" id="correo" placeholder="Ingrese correo" required>
+
+            <label for="rol">Rol:</label>
+            <select id="rol" required>
+                <option value="administrador">Administrador</option>
+                <option value="usuario">Usuario</option>
+            </select>
+
+            <button type="submit">Registrar Usuario</button>
+        </form>
+
+        <h3>Usuarios Registrados</h3>
+        <ul id="usuarios-lista"></ul>
+    </section>
+
+    <!-- Gestión de Celdas y Registro de Entrada/Salida -->
+    <section id="gestion-celdas" class="mockup">
+        <h2>Gestión de Celdas y Registro de Entrada/Salida</h2>
+        <form id="entrada-form">
+            <label for="placa">Placa del Vehículo:</label>
+            <input type="text" id="placa" placeholder="Ingrese la placa" required>
+
+            <label for="tipo-vehiculo">Tipo de Vehículo:</label>
+            <select id="tipo-vehiculo" required>
+                <option value="carro">Carro</option>
+                <option value="moto">Moto</option>
+                <option value="bicicleta">Bicicleta</option>
+            </select>
+
+            <button type="submit">Registrar Entrada</button>
+        </form>
+
+        <h3>Estado de las Celdas</h3>
+        <div id="celdas-grid" class="celdas-grid"></div>
+
+        <h3>Historial de Registros</h3>
+        <ul id="registro-lista"></ul>
+    </section>
+
+    <!-- Gestión de Pagos -->
+    <section id="gestionar-pagos" class="mockup">
+        <h2>Gestión de Pagos</h2>
+        <form id="pago-form">
+            <label for="usuario-pago">Usuario:</label>
+            <input type="text" id="usuario-pago" placeholder="Ingrese nombre del usuario" required>
+
+            <label for="monto">Monto del Pago:</label>
+            <input type="number" id="monto" placeholder="Ingrese el monto" required>
+
+            <button type="submit">Registrar Pago</button>
+        </form>
+
+        <h3>Historial de Pagos</h3>
+        <ul id="lista-pagos"></ul>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
